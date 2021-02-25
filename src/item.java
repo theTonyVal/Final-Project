@@ -3,10 +3,10 @@ package src;
 public abstract class item
 {
     private String name;
-    private int id;
+    private String id;
     private double price;
 
-    public item (int _id, String _name, double _price)
+    public item (String _id, String _name, double _price)
     {
         name = _name;
         id = _id;
@@ -16,7 +16,7 @@ public abstract class item
     public String toString()
     {
         //String result = "id: " + id + " name: " + name + " price: " + price;
-        String result = id + " " + name + " " + price;
+        String result = quantity() + " " + id + " " + name + " " + price + " " + model();
         return result;
     }
 
