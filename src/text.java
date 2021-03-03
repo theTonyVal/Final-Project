@@ -1,8 +1,10 @@
 package src;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 import java.util.ArrayList;
 import src.item.*;
@@ -49,6 +51,19 @@ public class text {
         }
 
         return data;
+    }
+
+    public void writeObj(item item)
+    {
+        try (FileOutputStream fos = new FileOutputStream("object.dat");
+        ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+
+        // write object to file
+        oos.writeObject(item);
+
+        } catch (IOException ex) {
+        ex.printStackTrace();
+        }
     }
 
 }

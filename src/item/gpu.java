@@ -2,23 +2,23 @@ package src.item;
 
 import java.io.Serializable;
 
-public class cpu implements item, Serializable
+public class gpu implements item, Serializable
 {
     /**
      *
      */
     private static final long serialVersionUID = 1L;
-    
+
     private String model;
     private double price;
-    private int threads;
+    private boolean raytrace;
     private int quantity;
-
-    public cpu(String _model, double _price, int _threads, int _quantity)
+    
+    public gpu(String _model, double _price, boolean _raytrace, int _quantity)
     {
         model = _model;
         price = _price;
-        threads = _threads;
+        raytrace = _raytrace;
         quantity = _quantity;
     }
 
@@ -32,14 +32,13 @@ public class cpu implements item, Serializable
         return price;
     }
 
-    public int threads()
+    public boolean raytrace()
     {
-        return threads;
+        return raytrace;
     }
 
     public int quantity()
     {
         return quantity;
     }
-
 }

@@ -2,7 +2,7 @@ package src.account;
 
 public abstract class account {
 
-    private String username, password;
+    String username, password;
 
     public account(String _username, String _password)
     {

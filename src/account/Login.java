@@ -26,11 +26,9 @@ public class Login
         // Get user input
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("*** Welcome to the program ***\n");
-
-        System.out.println("Please type your username :");
+        System.out.println("Enter your username: ");
         username = scan.nextLine();   
-        System.out.println("Please type your password :");
+        System.out.println("Enter your password: ");
         password = scan.nextLine();
 
         // Iterate through list of users to see if we have a match
