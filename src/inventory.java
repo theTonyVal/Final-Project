@@ -1,7 +1,10 @@
 package src;
 
+import java.util.List;
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.io.File;
+import src.item.*;
 
 public class inventory {
 
@@ -29,6 +32,15 @@ public class inventory {
     public item getItem(int i)
     {
         return invent.get(i);
+    }
+
+    public void PrintInv()
+    {
+        System.out.print("\n");
+        for (int c = 0; c < invent.size(); c++)
+        {
+            System.out.println(invent.get(c));
+        }
     }
 
     public String toString()

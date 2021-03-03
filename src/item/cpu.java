@@ -1,14 +1,15 @@
-package src;
+package src.item;
 
-public class cpu extends item
+public class cpu implements item
 {
     private String model;
     private int quantity;
+    private double price;
 
-    public cpu(int _quantity, String _id, String _name, double _price, String _model)
+    public cpu(String _model, double _price, int _quantity)
     {
-        super(_id, _name, _price);
         model = _model;
+        price = _price;
         quantity = _quantity;
     }
 
@@ -17,8 +18,14 @@ public class cpu extends item
         return model;
     }
 
+    public double price()
+    {
+        return price;
+    }
+
     public int quantity()
     {
         return quantity;
     }
+
 }
