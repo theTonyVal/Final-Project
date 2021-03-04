@@ -42,8 +42,13 @@ public class gpu implements item, Serializable
         return quantity;
     }
 
+    public void sell()
+    {
+        quantity -= 1;
+    }
+
     public String toString()
     {
-        return model;
+        return model + " " + quantity;
     }
 }

@@ -2,48 +2,76 @@ package src;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 import src.item.*;
 
 public class text {
 
-    private String path;
+    private File path;
 
     public text(String _path)
     {
-        path = _path;
+        path = new File(_path);
     }
 
-    public void writeObj(item item)
+    public void writeObj(ArrayList<item> itemList)
     {
         try (FileOutputStream fos = new FileOutputStream(path);
         ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 
         // write object to file
-        oos.writeObject(item);
-        System.out.println("Item successfully written");
+        for (item i : itemList) {
+            oos.writeObject(i);
+            System.out.println("Item successfully written");
+        }
 
         } catch (IOException ex) {
-        ex.printStackTrace();
+            ex.printStackTrace();
         }
     }
 
-    public void readObj()
+    public ArrayList<item> readObj()
     {
+        ArrayList<item> items = new ArrayList<>();
+
         try (FileInputStream fis = new FileInputStream(path);
         ObjectInputStream ois = new ObjectInputStream(fis)) {
 
         // read object from file
-        item user = (item) ois.readObject();
+        for (int i = 0; i < path.length(); i++) {
+            Object obj = ois.readObject();
+            items.add((item)obj);
+        }
 
         // print object
-        System.out.print(user);
+        System.out.print("recieved : " + items);
+
+        // try {
+        //     FileInputStream fis=new FileInputStream("object.dat");
+        //     ObjectInputStream ois=new ObjectInputStream(fis);
+        //     item wo=null;
+        //     item[] woj=new item[5];
+    
+        //     ArrayList<Object> woi=new ArrayList<>();
+        //     for (int i = 0; i < 2; i++)
+        //     {
+        //         woi.add(ois.readObject());
+        //     }
+    
+        //     for(int i=0;i<woi.size();i++){
+        //         System.out.print(woi);
+        //     }
+
+        return items;
 
         } catch (IOException | ClassNotFoundException ex) {
-        ex.printStackTrace();
+            //ex.printStackTrace();
+            return items;
         }
     }
 

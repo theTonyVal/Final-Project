@@ -6,8 +6,8 @@ import src.item.*;
 public class inventory {
 
     public String path = "object.dat";
-
     public text text = new text(path);
+    
     private ArrayList<item> invent = new ArrayList<>();
 
     public inventory(ArrayList<item> _invent)
@@ -27,13 +27,13 @@ public class inventory {
 
     public void write()
     {
-        for (item c : invent)
-            text.writeObj(c);
+        text.writeObj(invent);
     }
 
     public void read()
     {
-        text.readObj();
+        invent = text.readObj();
+        System.out.println(invent);
     }
 
     public item getItem(int i)

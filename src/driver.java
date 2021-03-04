@@ -11,15 +11,20 @@ public class driver {
 
     private static Login l = new Login();
 
-    private static cpu cpu = new cpu("ryzen5-3600", 400.0, 5, 4);
+    private static cpu amd = new cpu("ryzen5-3600", 400.0, 5, 4);
+    private static cpu intel = new cpu("i5-9600k", 400.0, 5, 5);
+    private static gpu nvidia = new gpu("2060rtx", 500.0, true, 4);
 
     public static void main(String[] args) throws IOException
     {
-        inv.addItem(cpu);
+        inv.addItem(amd);
+        amd.sell();
+        inv.addItem(intel);
+        inv.addItem(nvidia);
+        System.out.println(inv);
+        nvidia.sell();
         inv.write();
         inv.read();
-
-
     }
 
 }
