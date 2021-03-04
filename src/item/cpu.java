@@ -42,4 +42,8 @@ public class cpu implements item, Serializable
         return quantity;
     }
 
+    public String toString()
+    {
+        return model;
+    }
 }

@@ -1,13 +1,13 @@
 package src;
 
 import java.util.ArrayList;
-import java.io.File;
 import src.item.*;
 
 public class inventory {
 
-    public File store = new File("store.txt");
-    public text text = new text(store);
+    public String path = "object.dat";
+
+    public text text = new text(path);
     private ArrayList<item> invent = new ArrayList<>();
 
     public inventory(ArrayList<item> _invent)
@@ -15,16 +15,25 @@ public class inventory {
         invent = _invent;
     }
 
-    public void addItem(item i)
+    public void addItem(item item)
     {
-        invent.add(i);
-        text.write(invent);
+        invent.add(item);
     }
 
     public void removeItem(item i)
     {
         invent.remove(i);
-        text.write(invent);
+    }
+
+    public void write()
+    {
+        for (item c : invent)
+            text.writeObj(c);
+    }
+
+    public void read()
+    {
+        text.readObj();
     }
 
     public item getItem(int i)

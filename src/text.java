@@ -1,67 +1,48 @@
 package src;
 
-import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.Scanner;
-import java.util.ArrayList;
+
 import src.item.*;
 
 public class text {
-    
-    private File file;
-    private String data;
 
-    public text(File _file)
+    private String path;
+
+    public text(String _path)
     {
-        file = _file;
-    }
-
-    public void write(ArrayList<item> invent)
-    {
-        try 
-        {
-            FileWriter fw = new FileWriter(file);
-            
-            fw.write(invent.toString());
-
-            fw.close();
-        } 
-        catch (IOException e) 
-        {
-            System.out.println("An error occurred while writing");
-            e.printStackTrace();
-        }
-    }
-
-    public String read()
-    {
-        try
-        {
-            Scanner scan = new Scanner(file);
-            data = scan.nextLine();
-            scan.close();
-        }
-        catch (IOException e)
-        {
-            System.out.println("An error occurred while reading");
-            e.printStackTrace();
-        }
-
-        return data;
+        path = _path;
     }
 
     public void writeObj(item item)
     {
-        try (FileOutputStream fos = new FileOutputStream("object.dat");
+        try (FileOutputStream fos = new FileOutputStream(path);
         ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 
         // write object to file
         oos.writeObject(item);
+        System.out.println("Item successfully written");
 
         } catch (IOException ex) {
+        ex.printStackTrace();
+        }
+    }
+
+    public void readObj()
+    {
+        try (FileInputStream fis = new FileInputStream(path);
+        ObjectInputStream ois = new ObjectInputStream(fis)) {
+
+        // read object from file
+        item user = (item) ois.readObject();
+
+        // print object
+        System.out.print(user);
+
+        } catch (IOException | ClassNotFoundException ex) {
         ex.printStackTrace();
         }
     }
