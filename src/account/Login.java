@@ -7,11 +7,11 @@ import java.util.List;
 public class Login 
 {
 
-    private String username, password;
+    //private String username, password;
     public boolean login;
     public account loggedInUser;
     
-    public void LogIn()
+    public void LogIn(String username, String password)
     {
         // Used to hold the instance of a user who successfully logged in
         account loggedInUser = null;
@@ -24,12 +24,12 @@ public class Login
         listOfUsers.add(new adminAcc("twiet", "qwerty"));
 
         // Get user input
-        Scanner scan = new Scanner(System.in);
+        // Scanner scan = new Scanner(System.in);
 
-        System.out.println("Enter your username: ");
-        username = scan.nextLine();   
-        System.out.println("Enter your password: ");
-        password = scan.nextLine();
+        // System.out.println("Enter your username: ");
+        // username = scan.nextLine();   
+        // System.out.println("Enter your password: ");
+        // password = scan.nextLine();
 
         // Iterate through list of users to see if we have a match
         for (account user : listOfUsers)
@@ -56,10 +56,10 @@ public class Login
         else
         {
             System.out.println("Invalid username/password combination");
-            LogIn();
+            //LogIn();
         }
 
-        scan.close();
+        //scan.close();
     }
 
     public boolean LoggedIn()
