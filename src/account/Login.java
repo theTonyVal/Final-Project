@@ -20,7 +20,7 @@ public class Login
         List<account> listOfUsers = new ArrayList<>();
 
         // Add 3 users to the list
-        listOfUsers.add(new customer("tony", "12345"));
+        listOfUsers.add(new customer("anthony", "12345"));
         listOfUsers.add(new adminAcc("twiet", "qwerty"));
 
         // Get user input

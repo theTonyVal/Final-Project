@@ -5,7 +5,7 @@ import src.item.*;
 
 public class inventory {
 
-    public String path = "object.dat";
+    public String path = "store.dat";
     public text text = new text(path);
     
     private ArrayList<item> invent = new ArrayList<>();
