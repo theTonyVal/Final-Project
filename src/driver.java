@@ -17,6 +17,7 @@ public class driver {
 
     public static void main(String[] args) throws IOException
     {
+        l.LogIn();
         inv.addItem(amd);
         amd.sell();
         inv.addItem(intel);

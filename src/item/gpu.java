@@ -11,14 +11,14 @@ public class gpu implements item, Serializable
 
     private String model;
     private double price;
-    private boolean raytrace;
+    private boolean gaming;
     private int quantity;
     
-    public gpu(String _model, double _price, boolean _raytrace, int _quantity)
+    public gpu(String _model, double _price, boolean _gaming, int _quantity)
     {
         model = _model;
         price = _price;
-        raytrace = _raytrace;
+        gaming = _gaming;
         quantity = _quantity;
     }
 
@@ -32,9 +32,9 @@ public class gpu implements item, Serializable
         return price;
     }
 
-    public boolean raytrace()
+    public boolean gaming()
     {
-        return raytrace;
+        return gaming;
     }
 
     public int quantity()
