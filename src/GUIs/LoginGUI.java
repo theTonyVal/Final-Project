@@ -1,4 +1,4 @@
-package test;
+package src.GUIs;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,7 @@ public class LoginGUI implements ActionListener {
     private JTextField userText;
     private JButton button;
     private JPasswordField passwordText;
-    private Login l = new Login();
+    private LoginCheck l = new LoginCheck();
 
     public LoginGUI() {
 
@@ -56,7 +56,7 @@ public class LoginGUI implements ActionListener {
         
     }
 
-    public static void main(String[] args)
+    public void Login()
     {
         new LoginGUI();
     }
@@ -68,6 +68,6 @@ public class LoginGUI implements ActionListener {
 
         System.out.print(user + ", " + password);
         
-        l.LogIn(user, password);
+        l.LoginAuth(user, password);
     }
 }

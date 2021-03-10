@@ -1,10 +1,10 @@
 package src.account;
 
-public class customer extends account{
+public class Customer extends account{
 
     private String user, pass;
 
-    public customer(String username, String password)
+    public Customer(String username, String password)
     {
         super(username, password);
         
@@ -22,8 +22,9 @@ public class customer extends account{
         return pass;
     }
 
-    public boolean admin()
+    public boolean isAdmin()
     {
-        return true;
+        return false;
     }
+    
 }

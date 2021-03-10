@@ -1,3 +1,2 @@
-Menu
-Make item classes interface
-Make Account classes abstract
+Main GUI
+Account Storage in .dat file

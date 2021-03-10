@@ -10,7 +10,7 @@ public abstract class account {
         password = _password;
     }
 
-    public abstract boolean admin();
+    public abstract boolean isAdmin();
     public abstract String getUser();
     public abstract String getPass();
 }

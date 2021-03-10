@@ -1,10 +1,10 @@
 package src.account;
 
-public class adminAcc extends account{
+public class Admin extends account{
 
     private String user, pass;
 
-    public adminAcc(String username, String password)
+    public Admin(String username, String password)
     {
         super(username, password);
         
@@ -22,7 +22,7 @@ public class adminAcc extends account{
         return pass;
     }
 
-    public boolean admin()
+    public boolean isAdmin()
     {
         return true;
     }

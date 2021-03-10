@@ -1,17 +1,16 @@
 package src.account;
 
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Login 
+public class LoginCheck 
 {
 
     //private String username, password;
     public boolean login;
     public account loggedInUser;
     
-    public void LogIn(String username, String password)
+    public void LoginAuth(String username, String password)
     {
         // Used to hold the instance of a user who successfully logged in
         account loggedInUser = null;
@@ -20,16 +19,8 @@ public class Login
         List<account> listOfUsers = new ArrayList<>();
 
         // Add 3 users to the list
-        listOfUsers.add(new customer("anthony", "12345"));
-        listOfUsers.add(new adminAcc("twiet", "qwerty"));
-
-        // Get user input
-        // Scanner scan = new Scanner(System.in);
-
-        // System.out.println("Enter your username: ");
-        // username = scan.nextLine();   
-        // System.out.println("Enter your password: ");
-        // password = scan.nextLine();
+        listOfUsers.add(new Customer("anthony", "12345"));
+        listOfUsers.add(new Admin("twiet", "qwerty"));
 
         // Iterate through list of users to see if we have a match
         for (account user : listOfUsers)
@@ -56,10 +47,8 @@ public class Login
         else
         {
             System.out.println("Invalid username/password combination");
-            //LogIn();
         }
 
-        //scan.close();
     }
 
     public boolean LoggedIn()

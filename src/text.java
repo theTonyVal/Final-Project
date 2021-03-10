@@ -51,22 +51,6 @@ public class text {
         // print object
         System.out.print("recieved : " + items);
 
-        // try {
-        //     FileInputStream fis=new FileInputStream("object.dat");
-        //     ObjectInputStream ois=new ObjectInputStream(fis);
-        //     item wo=null;
-        //     item[] woj=new item[5];
-    
-        //     ArrayList<Object> woi=new ArrayList<>();
-        //     for (int i = 0; i < 2; i++)
-        //     {
-        //         woi.add(ois.readObject());
-        //     }
-    
-        //     for(int i=0;i<woi.size();i++){
-        //         System.out.print(woi);
-        //     }
-
         return items;
 
         } catch (IOException | ClassNotFoundException ex) {

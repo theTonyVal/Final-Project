@@ -33,10 +33,6 @@ public class GUI implements ActionListener{
         frame.setVisible(true);
     }
 
-    public static void main (String[] args) {
-        new GUI();
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         c++;
