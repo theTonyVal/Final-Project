@@ -7,6 +7,10 @@ import src.account.*;
 
 public class LoginGUI implements ActionListener {
 
+    public MainGUI mGui;
+
+    private boolean Auth;
+
     private JFrame frame;
     private JPanel panel;
     private JLabel userLabel, passwordLabel, success;
@@ -61,6 +65,11 @@ public class LoginGUI implements ActionListener {
         new LoginGUI();
     }
 
+    public boolean Auth()
+    {
+        return Auth;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String user = userText.getText();
@@ -69,5 +78,11 @@ public class LoginGUI implements ActionListener {
         System.out.print(user + ", " + password);
         
         l.LoginAuth(user, password);
+
+        if (l.LoggedIn())
+        {
+            frame.setVisible(false);
+            mGui = new MainGUI();
+        }
     }
 }

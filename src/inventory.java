@@ -30,10 +30,10 @@ public class inventory {
         text.writeObj(invent);
     }
 
-    public void read()
+    public ArrayList<item> read()
     {
         invent = text.readObj();
-        System.out.println(invent);
+        return invent;
     }
 
     public item getItem(int i)
