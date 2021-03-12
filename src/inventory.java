@@ -41,14 +41,14 @@ public class inventory {
         return invent.get(i);
     }
 
-    public void PrintInv()
-    {
-        System.out.print("\n");
-        for (int c = 0; c < invent.size(); c++)
-        {
-            System.out.println(invent.get(c));
-        }
-    }
+    // public void PrintInv()
+    // {
+    //     System.out.print("\n");
+    //     for (int c = 0; c < invent.size(); c++)
+    //     {
+    //         System.out.println(invent.get(c));
+    //     }
+    // }
 
     public String toString()
     {

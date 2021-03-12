@@ -1,2 +1,3 @@
-Main GUI
+Main GUI functional
+Gui for Admins to edit
 Account Storage in .dat file
