@@ -19,7 +19,7 @@ public class LoginCheck
         List<account> listOfUsers = new ArrayList<>();
 
         // Add 3 users to the list
-        listOfUsers.add(new Customer("anthony", "12345"));
+        listOfUsers.add(new customer("anthony", "12345"));
         listOfUsers.add(new Admin("twiet", "qwerty"));
 
         // Iterate through list of users to see if we have a match

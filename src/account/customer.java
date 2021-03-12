@@ -1,10 +1,10 @@
 package src.account;
 
-public class Customer extends account{
+public class customer extends account{
 
     private String user, pass;
 
-    public Customer(String username, String password)
+    public customer(String username, String password)
     {
         super(username, password);
         
