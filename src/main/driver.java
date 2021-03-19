@@ -1,4 +1,4 @@
-package src;
+package main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,11 +6,11 @@ import java.util.Map;
 
 import javax.print.event.PrintEvent;
 
-import src.GUIs.LoginGUI;
-import src.GUIs.MainGUI;
-import src.item.cpu;
-import src.item.gpu;
-import src.item.item;
+import GUIs.LoginGUI;
+import GUIs.*;
+import item.cpu;
+import item.gpu;
+import item.item;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package src.account;
+package account;
 
 public class Admin extends account{
 

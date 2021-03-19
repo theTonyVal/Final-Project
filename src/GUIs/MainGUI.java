@@ -1,12 +1,12 @@
-package src.GUIs;
+package GUIs;
 
 import javax.swing.*;
 
-import src.Cart;
-import src.inventory;
-import src.item.cpu;
-import src.item.gpu;
-import src.item.item;
+import main.Cart;
+import main.inventory;
+import item.cpu;
+import item.gpu;
+import item.item;
 
 import java.awt.*;
 import java.awt.event.*;
