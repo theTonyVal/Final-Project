@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import src.item.item;
+
 public class inventory {
 
     public String path = "store.dat";

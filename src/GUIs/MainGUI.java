@@ -1,6 +1,13 @@
 package src.GUIs;
 
 import javax.swing.*;
+
+import src.Cart;
+import src.inventory;
+import src.item.cpu;
+import src.item.gpu;
+import src.item.item;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
@@ -25,7 +32,7 @@ public class MainGUI implements ActionListener {
     private JPanel panel;
     private JLabel itemLabel, priceLabel, skillLabel, quanLabel;
     private JTextField userText;
-    private JButton addCart;
+    private JButton addCart, removeCart;
 	private DefaultListModel<Map<item, Integer>> itemList;
     private JList<Map<item, Integer>> itemJList = new JList<Map<item, Integer>>();
     private JList<item> cartJList = new JList<item>();
@@ -81,15 +88,14 @@ public class MainGUI implements ActionListener {
         panel.add(cartJList);
         
         addCart = new JButton("Add to Cart");
-        addCart.addActionListener(
-        		new ActionListener() {
-        		    @Override
-					public void actionPerformed(ActionEvent e) {
-        		      AddtoCart();
-        		    }
-        		  });
+        addCart.addActionListener(this);
         addCart.setBounds(525, 500, 100, 50);
         panel.add(addCart);
+        
+        removeCart = new JButton("Remove from Cart");
+        removeCart.addActionListener(this);
+        removeCart.setBounds(525, 250, 100, 50);
+        panel.add(removeCart);
 
         frame.repaint();
         frame.setVisible(true);
@@ -120,18 +126,20 @@ public class MainGUI implements ActionListener {
 
     public void RemoveFromCart()
     {
-        
+        item i = cartJList.getSelectedValue();
+        cartList.removeElement(i);
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        // String search = userText.getText().strip();
-        
-        // if (search.trim().equals(""))
-        //     System.out.println("Enter something into textfield to search");
-        // else
-        //     System.out.println(search);
-        
+        if (e.getSource() == addCart)
+        {
+        	AddtoCart();
+        }
+        else if (e.getSource() == removeCart)
+        {
+        	RemoveFromCart();
+        }
     }
 }
 

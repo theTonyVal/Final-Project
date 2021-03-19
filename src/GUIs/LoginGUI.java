@@ -1,6 +1,8 @@
 package src.GUIs;
 
 import javax.swing.*;
+
+import src.account.LoginCheck;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
