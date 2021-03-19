@@ -12,17 +12,20 @@ public class customer extends account{
         pass = password;
     }
 
-    public String getUser()
+    @Override
+	public String getUser()
     {
         return user;
     }
 
-    public String getPass()
+    @Override
+	public String getPass()
     {
         return pass;
     }
 
-    public boolean isAdmin()
+    @Override
+	public boolean isAdmin()
     {
         return false;
     }

@@ -21,12 +21,14 @@ public class cpu implements item, Serializable
         quantity = _quantity;
     }
 
-    public String model()
+    @Override
+	public String model()
     {
         return model;
     }
 
-    public double price()
+    @Override
+	public double price()
     {
         return price;
     }
@@ -36,17 +38,20 @@ public class cpu implements item, Serializable
         return threads;
     }
 
-    public int quantity()
+    @Override
+	public int quantity()
     {
         return quantity;
     }
 
-    public void sell()
+    @Override
+	public void sell()
     {
         quantity -= 1;
     }
 
-    public String toString()
+    @Override
+	public String toString()
     {
         return model + " " + price + " threads:" + threads + " ";
     }

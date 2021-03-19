@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import src.item.*;
-
 public class inventory {
 
     public String path = "store.dat";
@@ -45,7 +43,8 @@ public class inventory {
        return invent.get(i);
    }
    
-   public String toString()
+   @Override
+public String toString()
    {
        return invent.toString();
    }

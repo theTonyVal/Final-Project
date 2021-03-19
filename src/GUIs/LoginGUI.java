@@ -5,8 +5,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 
-import src.account.*;
-
 public class LoginGUI implements ActionListener {
 
     public MainGUI mGui;
@@ -26,7 +24,7 @@ public class LoginGUI implements ActionListener {
         frame = new JFrame();
         panel = new JPanel();
         frame.setSize(350, 200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.add(panel);
 

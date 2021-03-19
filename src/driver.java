@@ -7,9 +7,6 @@ import java.util.Map;
 import javax.print.event.PrintEvent;
 
 import java.io.IOException;
-import src.account.*;
-import src.item.*;
-import src.GUIs.*;
 
 public class driver {
 

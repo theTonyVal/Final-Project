@@ -9,11 +9,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import src.inventory;
-import src.account.*;
-import src.item.*;
-import src.*;
-
 public class MainGUI implements ActionListener {
 
     public static ArrayList<Map<item, Integer>> inv = new ArrayList<>();
@@ -44,7 +39,7 @@ public class MainGUI implements ActionListener {
         frame = new JFrame();
         panel = new JPanel();
         frame.setSize(1200, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.add(panel);
 
@@ -88,7 +83,8 @@ public class MainGUI implements ActionListener {
         addCart = new JButton("Add to Cart");
         addCart.addActionListener(
         		new ActionListener() {
-        		    public void actionPerformed(ActionEvent e) {
+        		    @Override
+					public void actionPerformed(ActionEvent e) {
         		      AddtoCart();
         		    }
         		  });
