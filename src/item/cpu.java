@@ -3,12 +3,11 @@ package src.item;
 import java.io.Serializable;
 
 public class cpu implements item, Serializable
-{
+{   
     /**
      *
      */
-    private static final long serialVersionUID = 1L;
-    
+    private static final long serialVersionUID = -4403288843703007447L;
     private String model;
     private double price;
     private int threads;
@@ -49,6 +48,6 @@ public class cpu implements item, Serializable
 
     public String toString()
     {
-        return model + " " + price + " " + threads + " " + quantity;
+        return model + " " + price + " threads:" + threads + " ";
     }
 }

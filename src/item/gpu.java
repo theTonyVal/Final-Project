@@ -7,8 +7,7 @@ public class gpu implements item, Serializable
     /**
      *
      */
-    private static final long serialVersionUID = 1L;
-
+    private static final long serialVersionUID = 507941469347219168L;
     private String model;
     private double price;
     private boolean gaming;
@@ -49,6 +48,6 @@ public class gpu implements item, Serializable
 
     public String toString()
     {
-        return model + " " + price + " " + gaming + " " + quantity;
+        return model + " " + price + " gaming:" + gaming + " ";
     }
 }

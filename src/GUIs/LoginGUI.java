@@ -3,6 +3,8 @@ package src.GUIs;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+
 import src.account.*;
 
 public class LoginGUI implements ActionListener {
@@ -82,7 +84,11 @@ public class LoginGUI implements ActionListener {
         if (l.LoggedIn())
         {
             frame.setVisible(false);
-            mGui = new MainGUI();
+            try {
+                mGui = new MainGUI();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         }
     }
 }
