@@ -1,7 +1,7 @@
-package main;
+package src.main;
 
 import java.util.ArrayList;
-import item.item;
+import src.item.*;
 
 public class Cart {
     

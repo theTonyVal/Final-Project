@@ -1,4 +1,4 @@
-package main;
+package src.main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,11 +6,8 @@ import java.util.Map;
 
 import javax.print.event.PrintEvent;
 
-import GUIs.LoginGUI;
-import GUIs.*;
-import item.cpu;
-import item.gpu;
-import item.item;
+import src.GUIs.*;
+import src.item.*;
 
 import java.io.IOException;
 
@@ -21,7 +18,8 @@ public class driver {
 
     public static ArrayList<Map<item, Integer>> _invent = new ArrayList<>();
     public static inventory inv;
-    public static Map map = new HashMap<item, Integer>();
+    public static Map<item, Integer> map = new HashMap<item, Integer>();
+    public static Map<item, Integer> map2 = new HashMap<item, Integer>();
 
     private static cpu amd = new cpu("ryzen5-3600", 400.0, 5, 4);
     private static cpu intel = new cpu("i5-9600k", 400.0, 5, 5);
@@ -31,6 +29,8 @@ public class driver {
     {
         map.put(nvidia, nvidia.quantity());
         _invent.add(map);
+        map2.put(amd, amd.quantity());
+        _invent.add(map2);
         inv = new inventory(_invent);
         inv.write();
         

@@ -1,4 +1,4 @@
-package main;
+package src.main;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,7 +14,7 @@ import java.lang.reflect.Array;
 import java.security.Key;
 import java.util.*;
 
-import item.item;
+import src.item.item;
 
 public class text {
 

@@ -1,12 +1,9 @@
-package GUIs;
+package src.GUIs;
 
 import javax.swing.*;
 
-import main.Cart;
-import main.inventory;
-import item.cpu;
-import item.gpu;
-import item.item;
+import src.main.*;
+import src.item.*;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -30,9 +27,9 @@ public class MainGUI implements ActionListener {
 
     private JFrame frame;
     private JPanel panel;
-    private JLabel itemLabel, priceLabel, skillLabel, quanLabel;
+    private JLabel itemLabel, priceLabel, skillLabel, quanLabel, costLabel;
     private JTextField userText;
-    private JButton addCart, removeCart;
+    private JButton addCart, removeCart, purchase;
 	private DefaultListModel<Map<item, Integer>> itemList;
     private JList<Map<item, Integer>> itemJList = new JList<Map<item, Integer>>();
     private JList<item> cartJList = new JList<item>();
@@ -41,7 +38,6 @@ public class MainGUI implements ActionListener {
     public MainGUI() throws IOException {
 
         inv = invent.read();
-        System.out.print(inv);
 
         frame = new JFrame();
         panel = new JPanel();
@@ -67,6 +63,10 @@ public class MainGUI implements ActionListener {
         quanLabel = new JLabel("quantity");
         quanLabel.setBounds(310, 20, 100, 25);
         panel.add(quanLabel);
+
+        costLabel = new JLabel("cost");
+        costLabel.setBounds(560, 150, 100, 50);
+        panel.add(costLabel);
         
         //itemList = new JList<item>(_invent.toArray(new item[0]));
         itemList = new DefaultListModel<Map<item, Integer>>();
@@ -75,8 +75,6 @@ public class MainGUI implements ActionListener {
         {
         	itemList.add(c, inv.get(c));
         }
-        
-        System.out.print(itemList);
         
         itemJList.setModel(itemList);
         itemJList.setBounds(10, 50, 500, 500);
@@ -91,6 +89,11 @@ public class MainGUI implements ActionListener {
         addCart.addActionListener(this);
         addCart.setBounds(525, 500, 100, 50);
         panel.add(addCart);
+
+        purchase = new JButton("Purchase");
+        purchase.addActionListener(this);
+        purchase.setBounds(525, 325, 100, 50);
+        panel.add(purchase);
         
         removeCart = new JButton("Remove from Cart");
         removeCart.addActionListener(this);
@@ -127,7 +130,37 @@ public class MainGUI implements ActionListener {
     public void RemoveFromCart()
     {
         item i = cartJList.getSelectedValue();
-        cartList.removeElement(i);
+
+        System.out.print(i);
+
+        for (int c = 0; c < itemList.size(); c++)
+        {
+            for (item j : itemList.get(c).keySet())
+            {
+                System.out.print(itemList.get(c));
+                if (i.equals(j))
+                {
+                    System.out.print(i + " " + j);
+                    itemList.get(c).put(i, itemList.get(c).get(i)+1);
+                    cartList.removeElement(i);
+                }
+
+            }
+        }
+
+        panel.repaint();
+    }
+
+    public void Purchase()
+    {
+        double total = 0;
+
+        for (int i = 0; i < cartList.size(); i++)
+        {
+            total += cartList.get(i).price();
+        }
+        costLabel.setText(Double.toString(total));
+        System.out.print(total);
     }
     
     @Override
@@ -139,6 +172,11 @@ public class MainGUI implements ActionListener {
         else if (e.getSource() == removeCart)
         {
         	RemoveFromCart();
+        }
+        else if (e.getSource() == purchase)
+        {
+            Purchase();
+            
         }
     }
 }

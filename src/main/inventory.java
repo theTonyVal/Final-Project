@@ -1,11 +1,11 @@
-package main;
+package src.main;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import item.item;
+import src.item.*;
 
 public class inventory {
 

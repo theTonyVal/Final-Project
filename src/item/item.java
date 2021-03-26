@@ -1,4 +1,4 @@
-package item;
+package src.item;
 
 public interface item
 {

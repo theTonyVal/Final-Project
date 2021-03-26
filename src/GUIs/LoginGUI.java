@@ -1,8 +1,8 @@
-package GUIs;
+package src.GUIs;
 
 import javax.swing.*;
 
-import account.*;
+import src.account.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package account;
+package src.account;
 
 public class customer extends account{
 
