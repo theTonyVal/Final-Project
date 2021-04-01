@@ -9,183 +9,118 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
-public class MainGUI implements ActionListener {
-
-    public static ArrayList<Map<item, Integer>> inv = new ArrayList<>();
-    public static ArrayList<item> _cart = new ArrayList<>();
+public class MainGUI implements ActionListener{
     
-    public static inventory invent = new inventory(inv);
-    public static Cart cart = new Cart(_cart);
-
-    private static cpu amd = new cpu("ryzen5-3600", 400.0, 5, 4);
-    private static cpu intel = new cpu("i5-9600k", 400.0, 5, 5);
-    private static gpu nvidia = new gpu("2060rtx", 500.0, true, 4);
-
+    private ArrayList<item> itemList = new ArrayList<item>();
+    private inventory inv = new inventory(itemList);
+    
     private JFrame frame;
     private JPanel panel;
-    private JLabel itemLabel, priceLabel, skillLabel, quanLabel, costLabel;
-    private JTextField userText;
-    private JButton addCart, removeCart, purchase;
-	private DefaultListModel<Map<item, Integer>> itemList;
-    private JList<Map<item, Integer>> itemJList = new JList<Map<item, Integer>>();
-    private JList<item> cartJList = new JList<item>();
-    private DefaultListModel<item> cartList;
+    private JLabel modelLabel;
+    private JLabel modelLabel_1;
+    private JLabel modelLabel_2;
+    private JLabel modelLabel_3;
 
-    public MainGUI() throws IOException {
-
-        inv = invent.read();
+    public MainGUI() throws IOException
+    {
 
         frame = new JFrame();
         panel = new JPanel();
-        frame.setSize(1200, 600);
+        frame.setSize(800, 600);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        frame.add(panel);
+        frame.getContentPane().add(panel);
 
         panel.setLayout(null);
 
-        itemLabel = new JLabel("items");
-        itemLabel.setBounds(10, 20, 100, 25);
-        panel.add(itemLabel);
-
-        priceLabel = new JLabel("price");
-        priceLabel.setBounds(110, 20, 100, 25);
-        panel.add(priceLabel);
-
-        skillLabel = new JLabel("skill");
-        skillLabel.setBounds(210, 20, 100, 25);
-        panel.add(skillLabel);
-
-        quanLabel = new JLabel("quantity");
-        quanLabel.setBounds(310, 20, 100, 25);
-        panel.add(quanLabel);
-
-        costLabel = new JLabel("cost");
-        costLabel.setBounds(560, 150, 100, 50);
-        panel.add(costLabel);
+        itemList = inv.read();
+        System.out.println(itemList);
         
-        //itemList = new JList<item>(_invent.toArray(new item[0]));
-        itemList = new DefaultListModel<Map<item, Integer>>();
+        JPanel panel_1 = new JPanel();
+        panel_1.setBounds(10, 85, 764, 120);
+        panel_1.setLayout(null);
+        panel.add(panel_1);
         
-        for (int c = 0; c < inv.size(); c++)
-        {
-        	itemList.add(c, inv.get(c));
-        }
+        modelLabel = new JLabel(itemList.get(0).model());
+        modelLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        modelLabel.setLocation(292, 40);
+        modelLabel.setSize(108, 32);
+        panel_1.add(modelLabel);
         
-        itemJList.setModel(itemList);
-        itemJList.setBounds(10, 50, 500, 500);
-        panel.add(itemJList);
+        modelLabel_1 = new JLabel(Double.toString(itemList.get(0).price()));
+        modelLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        modelLabel_1.setBounds(449, 42, 85, 29);
+        panel_1.add(modelLabel_1);
         
-        cartList = new DefaultListModel<item>();
-        cartJList.setModel(cartList);
-        cartJList.setBounds(650, 50, 500, 500);
-        panel.add(cartJList);
+        modelLabel_2 = new JLabel(Integer.toString(itemList.get(0).quantity()));
+        modelLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        modelLabel_2.setBounds(626, 39, 85, 35);
+        panel_1.add(modelLabel_2);
         
-        addCart = new JButton("Add to Cart");
-        addCart.addActionListener(this);
-        addCart.setBounds(525, 500, 100, 50);
-        panel.add(addCart);
-
-        purchase = new JButton("Purchase");
-        purchase.addActionListener(this);
-        purchase.setBounds(525, 325, 100, 50);
-        panel.add(purchase);
+        modelLabel_3 = new JLabel(itemList.get(0).id());
+        modelLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        modelLabel_3.setBounds(174, 40, 108, 32);
+        panel_1.add(modelLabel_3);
         
-        removeCart = new JButton("Remove from Cart");
-        removeCart.addActionListener(this);
-        removeCart.setBounds(525, 250, 100, 50);
-        panel.add(removeCart);
+        JPanel panel_1_1 = new JPanel();
+        panel_1_1.setLayout(null);
+        panel_1_1.setBounds(10, 216, 764, 120);
+        panel.add(panel_1_1);
+        
+        JLabel modelLabel_4 = new JLabel(itemList.get(1).model());
+        modelLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        modelLabel_4.setBounds(292, 40, 108, 32);
+        panel_1_1.add(modelLabel_4);
+        
+        JLabel modelLabel_1_1 = new JLabel(Double.toString(itemList.get(1).price()));
+        modelLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        modelLabel_1_1.setBounds(449, 42, 85, 29);
+        panel_1_1.add(modelLabel_1_1);
+        
+        JLabel modelLabel_2_1 = new JLabel(Integer.toString(itemList.get(1).quantity()));
+        modelLabel_2_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        modelLabel_2_1.setBounds(626, 39, 85, 35);
+        panel_1_1.add(modelLabel_2_1);
+        
+        JLabel modelLabel_3_1 = new JLabel(itemList.get(1).id());
+        modelLabel_3_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        modelLabel_3_1.setBounds(174, 40, 108, 32);
+        panel_1_1.add(modelLabel_3_1);
+        
+        JPanel panel_1_2 = new JPanel();
+        panel_1_2.setLayout(null);
+        panel_1_2.setBounds(10, 348, 764, 120);
+        panel.add(panel_1_2);
+        
+        JLabel modelLabel_5 = new JLabel(itemList.get(2).model());
+        modelLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        modelLabel_5.setBounds(292, 40, 108, 32);
+        panel_1_2.add(modelLabel_5);
+        
+        JLabel modelLabel_1_2 = new JLabel(Double.toString(itemList.get(2).price()));
+        modelLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        modelLabel_1_2.setBounds(449, 42, 85, 29);
+        panel_1_2.add(modelLabel_1_2);
+        
+        JLabel modelLabel_2_2 = new JLabel(Integer.toString(itemList.get(2).quantity()));
+        modelLabel_2_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        modelLabel_2_2.setBounds(626, 39, 85, 35);
+        panel_1_2.add(modelLabel_2_2);
+        
+        JLabel modelLabel_3_2 = new JLabel(itemList.get(2).id());
+        modelLabel_3_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        modelLabel_3_2.setBounds(174, 40, 108, 32);
+        panel_1_2.add(modelLabel_3_2);
 
         frame.repaint();
         frame.setVisible(true);
-        
     }
 
-    public void AddtoCart()
-    {
-        Map<item, Integer> selected = itemJList.getSelectedValue();
-        int quantity = 0;
 
-        for (int i : selected.values())
-        {
-            quantity = i;
-        }
-
-        if (quantity != 0)
-        {
-            Set<item> temp = selected.keySet();
-            for (item i : temp)
-            {
-                cartList.add(0, i);
-                selected.put(i, selected.get(i)-1);
-            }
-            panel.repaint();
-        }
-    }
-
-    public void RemoveFromCart()
-    {
-        item i = cartJList.getSelectedValue();
-
-        System.out.print(i);
-
-        for (int c = 0; c < itemList.size(); c++)
-        {
-            for (item j : itemList.get(c).keySet())
-            {
-                System.out.print(itemList.get(c));
-                if (i.equals(j))
-                {
-                    System.out.print(i + " " + j);
-                    itemList.get(c).put(i, itemList.get(c).get(i)+1);
-                    cartList.removeElement(i);
-                }
-
-            }
-        }
-
-        panel.repaint();
-    }
-
-    public void Purchase()
-    {
-        double total = 0;
-
-        for (int i = 0; i < cartList.size(); i++)
-        {
-            total += cartList.get(i).price();
-        }
-        costLabel.setText(Double.toString(total));
-        System.out.print(total);
-    }
-    
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == addCart)
-        {
-        	AddtoCart();
-        }
-        else if (e.getSource() == removeCart)
-        {
-        	RemoveFromCart();
-        }
-        else if (e.getSource() == purchase)
-        {
-            Purchase();
-            
-        }
+        
     }
 }
-
-//JButton substractButton = new JButton( new AbstractAction("substract") { 
-//    @Override
-//    public void actionPerformed( ActionEvent e ) {
-//        // substract Action
-//    }
-//});
-
-

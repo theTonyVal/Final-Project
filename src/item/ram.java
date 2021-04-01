@@ -1,20 +1,20 @@
 package src.item;
 
-import java.io.Serializable;
-
-public class ram implements item, Serializable{
+public class ram implements item {
     
     private String model;
     private double price;
     private double mHz;
     private int quantity;
+    private String id;
     
-    public ram(String _model, double _price, double _mHz, int _quantity)
+    public ram(String _model, double _price, int _quantity, String _id)
     {
         model = _model;
         price = _price;
-        mHz = _mHz;
+        // mHz = _mHz;
         quantity = _quantity;
+        id = _id;
     }
 
     @Override
@@ -29,11 +29,6 @@ public class ram implements item, Serializable{
         return price;
     }
 
-    public double mHz()
-    {
-        return mHz;
-    }
-
     @Override
 	public int quantity()
     {
@@ -46,10 +41,15 @@ public class ram implements item, Serializable{
         quantity -= 1;
     }
 
+    public String id()
+    {
+        return id;
+    }
+
     @Override
 	public String toString()
     {
-        return model + " " + price + " mHz:" + mHz + " ";
+        return model + "," + price + "," + quantity + "," + id;
     }
 
 }

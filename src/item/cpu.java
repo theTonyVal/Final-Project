@@ -1,24 +1,19 @@
 package src.item;
 
-import java.io.Serializable;
-
-public class cpu implements item, Serializable
+public class cpu implements item
 {   
-    /**
-     *
-     */
-    private static final long serialVersionUID = -4403288843703007447L;
     private String model;
     private double price;
     private int threads;
     private int quantity;
+    private String id;
 
-    public cpu(String _model, double _price, int _threads, int _quantity)
+    public cpu(String _model, double _price, int _quantity, String _id)
     {
         model = _model;
         price = _price;
-        threads = _threads;
         quantity = _quantity;
+        id = _id;
     }
 
     @Override
@@ -33,11 +28,6 @@ public class cpu implements item, Serializable
         return price;
     }
 
-    public int threads()
-    {
-        return threads;
-    }
-
     @Override
 	public int quantity()
     {
@@ -50,9 +40,14 @@ public class cpu implements item, Serializable
         quantity -= 1;
     }
 
+    public String id()
+    {
+        return id;
+    }
+
     @Override
 	public String toString()
     {
-        return model + " " + price + " threads:" + threads + " ";
+        return model + "," + price + "," + quantity + "," + id;
     }
 }

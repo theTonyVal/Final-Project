@@ -6,4 +6,5 @@ public interface item
     public int quantity();
     public double price();
     public void sell();
+    public String id();
 }

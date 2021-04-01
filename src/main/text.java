@@ -1,20 +1,12 @@
 package src.main;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.lang.reflect.Array;
-import java.security.Key;
 import java.util.*;
-
-import src.item.item;
+import src.item.*;
 
 public class text {
 
@@ -25,88 +17,52 @@ public class text {
         path = new File(_path);
     }
 
-    public void writeObj(ArrayList<Map<item, Integer>> itemList)
+    public void writeInvent(ArrayList<item> itemList) throws IOException
     {
-        try (FileOutputStream fos = new FileOutputStream(path);
-        ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-
-        // write object to file
-        for (Map<item, Integer> i : itemList) {
-            oos.writeObject(i);
-            System.out.println("Item successfully written");
-        }
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public void writeHash(ArrayList<Map<item, Integer>> itemList) throws IOException
-    {
-        FileWriter writer;
-
-        writer = new FileWriter(path, true);  //True = Append to file, false = Overwrite
-
-        for (Map<item, Integer> i : itemList)
+        FileWriter csv = new FileWriter(path);
+        
+        for (item i : itemList)
         {
-            System.out.println(i.keySet());
-            System.out.println(i.values());
-            writer.write(i.keySet().toString());
-            writer.write(",");
-            writer.write(i.values().toString());
+            csv.append(String.join(",", i.toString()));
+            csv.append("\n");
         }
 
-        // for (int i = 0; i < itemList.size(); i++) { 
-        //     Map<item, Integer> map = itemList.get(i);
-        //     item j = (item) map.keySet();
-        //     System.out.println(j);
-        //     //writer.write(itemList.get(i).toString());
-        //     //writer.write(",");
-        // }
-
-        writer.close();
+        csv.flush();
+        csv.close();
     }
 
-    //help: https://stackoverflow.com/questions/20068383/convert-csv-values-to-a-hashmap-key-value-pairs-in-java
-
-    public void readHash() throws IOException
+    public ArrayList<item> readInvent() throws IOException
     {
-        BufferedReader br = new BufferedReader(new FileReader("store.dat"));
-        String line = br.readLine();
-        Map<String, Integer> map = new HashMap<String, Integer>();
-        ArrayList<Map<item, Integer>> aList = new ArrayList<>();
-        String str[] = line.split(",");
+        BufferedReader csv = new BufferedReader(new FileReader(path));
+        ArrayList <item> items = new ArrayList<item>();
 
-        for (String i : str)
+
+        String row = csv.readLine();
+        while (row != null)
         {
-            System.out.println(i);
+            String[] temp = row.split(",");
+
+            if (temp[3].contains("r"))
+            {
+                ram tempRam = new ram(temp[0], Double.valueOf(temp[1]), Integer.valueOf(temp[2]), temp[3]);
+                items.add(tempRam);
+            }
+            else if (temp[3].contains("g"))
+            {
+                gpu tempGpu = new gpu(temp[0], Double.valueOf(temp[1]), Integer.valueOf(temp[2]), temp[3]);
+                items.add(tempGpu);
+            }
+            else if (temp[3].contains("c"))
+            {
+                cpu tempCpu = new cpu(temp[0], Double.valueOf(temp[1]), Integer.valueOf(temp[2]), temp[3]);
+                items.add(tempCpu);
+            }
+
+            row = csv.readLine();
         }
-
-        br.close();
-    }
-
-    public ArrayList<Map<item, Integer>> readObj()
-    {
-        ArrayList<Map<item, Integer>> items = new ArrayList<>();
-
-        try (FileInputStream fis = new FileInputStream(path);
-        ObjectInputStream ois = new ObjectInputStream(fis)) {
-
-        // read object from file
-        for (int i = 0; i < path.length(); i++) {
-            Object obj = ois.readObject();
-            items.add((Map<item, Integer>)obj);
-        }
-
-        // print object
-        System.out.print("recieved : " + items);
+        csv.close();
 
         return items;
-
-        } catch (IOException | ClassNotFoundException ex) {
-            // ex.printStackTrace();
-            return items;
-        }
     }
 
 }

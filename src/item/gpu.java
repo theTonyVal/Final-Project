@@ -1,24 +1,19 @@
 package src.item;
 
-import java.io.Serializable;
-
-public class gpu implements item, Serializable
+public class gpu implements item
 {
-    /**
-     *
-     */
-    private static final long serialVersionUID = 507941469347219168L;
     private String model;
     private double price;
     private boolean gaming;
     private int quantity;
+    private String id;
     
-    public gpu(String _model, double _price, boolean _gaming, int _quantity)
+    public gpu(String _model, double _price, int _quantity, String _id)
     {
         model = _model;
         price = _price;
-        gaming = _gaming;
         quantity = _quantity;
+        id = _id;
     }
 
     @Override
@@ -33,11 +28,6 @@ public class gpu implements item, Serializable
         return price;
     }
 
-    public boolean gaming()
-    {
-        return gaming;
-    }
-
     @Override
 	public int quantity()
     {
@@ -50,9 +40,14 @@ public class gpu implements item, Serializable
         quantity -= 1;
     }
 
+    public String id()
+    {
+        return id;
+    }
+
     @Override
 	public String toString()
     {
-        return model + " " + price + " gaming:" + gaming + " ";
+        return model + "," + price + "," + gaming + "," + id;
     }
 }

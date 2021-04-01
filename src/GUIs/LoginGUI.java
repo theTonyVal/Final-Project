@@ -86,8 +86,8 @@ public class LoginGUI implements ActionListener {
             frame.setVisible(false);
             try {
                 mGui = new MainGUI();
-            } catch (IOException e1) {
-                e1.printStackTrace();
+            } catch (IOException exception) {
+                exception.printStackTrace();
             }
         }
     }
