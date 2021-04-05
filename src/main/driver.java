@@ -19,13 +19,14 @@ public class driver {
     private static gpu nvidia = new gpu("2060rtx", 500.0, 10, "56345g");
     private static gpu radeon = new gpu("6600x", 800.0, 10, "89234g");
     private static ram hyperX = new ram("hyperx", 100.0, 10, "25891r");
+    private static misc keyBoard = new misc ("qwerty", 100.0, 10, "64533k");
 
     public static ArrayList<item> invent = new ArrayList<item>();
     public static text text = new text("store.csv");
 
     //initializes the Login GUI which will start the main GUI if a login is accepted.
     public static void main(String[] args) throws IOException
-    {
+    {    	
     	lGui = new LoginGUI();
     }
 

@@ -132,6 +132,12 @@ public class AdminGUI implements ActionListener{
 	                itemModel.add(itemModel.size(), tempCpu);
 	                itemList.add(tempCpu);
 	            }
+	            else
+	            {
+	            	misc tempMisc = new misc(m, p, q, ident);
+	            	itemModel.add(itemModel.size(), tempMisc);
+	            	itemList.add(tempMisc);
+	            }
 	        	text.writeInvent(itemList);
 	        	total.setText(updateTotal(itemList));
 	        	clearText();

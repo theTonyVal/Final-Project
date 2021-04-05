@@ -17,7 +17,7 @@ public class ram implements item {
         id = _id;
     }
 
-    //Commands to set info
+    //Set values in editing
 	public void setModel(String m)
     {
         model = m;
@@ -35,7 +35,7 @@ public class ram implements item {
         id = newId;
     }
 
-    //Get commands to get values
+    //Get methods to get values
     public String getModel() 
     {
     	return model;
@@ -53,7 +53,7 @@ public class ram implements item {
     	return id;
     }
     
-    //Misc commands to get data
+  	//Methods for database
 	public String toString()
     {
         return model + " " + price + " " + quantity + " " + id;

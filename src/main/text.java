@@ -60,6 +60,11 @@ public class text {
                 cpu tempCpu = new cpu(temp[0], Double.valueOf(temp[1]), Integer.valueOf(temp[2]), temp[3]);
                 items.add(tempCpu);
             }
+            else
+            {
+            	misc tempMisc = new misc(temp[0], Double.valueOf(temp[1]), Integer.valueOf(temp[2]), temp[3]);
+            	items.add(tempMisc);
+            }
 
             row = csv.readLine();
         }

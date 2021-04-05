@@ -35,7 +35,7 @@ public class gpu implements item
         id = newId;
     }
 
-    //Get commands to get values
+    //Get methods to get values
     public String getModel() 
     {
     	return model;
@@ -53,7 +53,7 @@ public class gpu implements item
     	return id;
     }
     
-    //Misc commands to get data
+    //Methods for database
 	public String toString()
     {
         return model + " " + price + " " + quantity + " " + id;

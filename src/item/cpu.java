@@ -17,7 +17,7 @@ public class cpu implements item
         id = _id;
     }
 
-    //Set commands for editing
+    //Set values in editing
 	public void setModel(String m)
     {
         model = m;
@@ -35,7 +35,7 @@ public class cpu implements item
         id = newId;
     }
     
-    //Get commands to get values
+    //Get methods to get values
     public String getModel() 
     {
     	return model;
@@ -53,7 +53,7 @@ public class cpu implements item
     	return id;
     }
     
-    //Misc commands for dealing with data
+    //Methods for database
     public String csvString()
     {
     	return model + "," + price + "," + quantity + "," + id;
