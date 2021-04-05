@@ -12,18 +12,20 @@ public class text {
 
     private File path;
 
+    //constructor for the text object. Takes in a parameter for the path to the file it writes to.
     public text(String _path)
     {
         path = new File(_path);
     }
 
+    //Writes the ArrayList of items to the .csv file (spreadsheet)
     public void writeInvent(ArrayList<item> itemList) throws IOException
     {
         FileWriter csv = new FileWriter(path);
         
         for (item i : itemList)
         {
-            csv.append(String.join(",", i.toString()));
+            csv.append(String.join(",", i.csvString()));
             csv.append("\n");
         }
 
@@ -31,6 +33,7 @@ public class text {
         csv.close();
     }
 
+    //Reads an ArrayList of items from the .csv file and organizes each item into different objects
     public ArrayList<item> readInvent() throws IOException
     {
         BufferedReader csv = new BufferedReader(new FileReader(path));

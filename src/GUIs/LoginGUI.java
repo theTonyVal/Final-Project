@@ -7,9 +7,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 
+//This GUI is designed to authenticate if the user has an account or not.
 public class LoginGUI implements ActionListener {
 
-    public MainGUI mGui;
+    public AdminGUI aGui;
+    public CustGUI cGui;
 
     private boolean Auth;
 
@@ -21,6 +23,7 @@ public class LoginGUI implements ActionListener {
     private JPasswordField passwordText;
     private LoginCheck l = new LoginCheck();
 
+    //Initializes the Login GUI with its design and interaction.
     public LoginGUI() {
 
         frame = new JFrame();
@@ -62,16 +65,7 @@ public class LoginGUI implements ActionListener {
         
     }
 
-    public void Login()
-    {
-        new LoginGUI();
-    }
-
-    public boolean Auth()
-    {
-        return Auth;
-    }
-
+    //Used for the interaction of the user with the GUI.
     @Override
     public void actionPerformed(ActionEvent e) {
         String user = userText.getText();
@@ -81,14 +75,23 @@ public class LoginGUI implements ActionListener {
         
         l.LoginAuth(user, password);
 
-        if (l.LoggedIn())
+        if (l.LoggedInAdmin())
         {
             frame.setVisible(false);
             try {
-                mGui = new MainGUI();
+                aGui = new AdminGUI();
             } catch (IOException exception) {
                 exception.printStackTrace();
             }
+        }
+        else if (l.LoggedInCust())
+        {
+        	frame.setVisible(false);
+        	try {
+        		cGui = new CustGUI();
+        	} catch (IOException exception) {
+        		exception.printStackTrace();
+        	}
         }
     }
 }

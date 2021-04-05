@@ -13,6 +13,7 @@ public class driver {
 
     private static LoginGUI lGui;
 
+    //A few variables used to test if the GUI was functioning
     private static cpu amd = new cpu("ryzen5-3600", 400.0, 10, "34536c");
     private static cpu intel = new cpu("i5-9600k", 400.0, 10, "25252c");
     private static gpu nvidia = new gpu("2060rtx", 500.0, 10, "56345g");
@@ -20,12 +21,12 @@ public class driver {
     private static ram hyperX = new ram("hyperx", 100.0, 10, "25891r");
 
     public static ArrayList<item> invent = new ArrayList<item>();
-    public static inventory inv = new inventory(invent);
+    public static text text = new text("store.csv");
 
-
+    //initializes the Login GUI which will start the main GUI if a login is accepted.
     public static void main(String[] args) throws IOException
     {
-        lGui = new LoginGUI();
+    	lGui = new LoginGUI();
     }
 
 }

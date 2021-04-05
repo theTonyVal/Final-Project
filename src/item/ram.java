@@ -1,5 +1,6 @@
 package src.item;
 
+//the RAM class that takes in parameters to be the RAM object
 public class ram implements item {
     
     private String model;
@@ -12,44 +13,58 @@ public class ram implements item {
     {
         model = _model;
         price = _price;
-        // mHz = _mHz;
         quantity = _quantity;
         id = _id;
     }
 
-    @Override
-	public String model()
+    //Commands to set info
+	public void setModel(String m)
     {
-        return model;
+        model = m;
+    }
+	public void setPrice(double newPrice)
+    {
+        price = newPrice;
+    }
+	public void setQuantity(int newQuan)
+    {
+        quantity = newQuan;
+    }
+    public void setId(String newId)
+    {
+        id = newId;
     }
 
-    @Override
-	public double price()
+    //Get commands to get values
+    public String getModel() 
     {
-        return price;
+    	return model;
     }
-
-    @Override
-	public int quantity()
+    public int getQuantity()
     {
-        return quantity;
+		return quantity;
     }
-
-    @Override
-	public void sell()
+    public double getPrice()
     {
-        quantity -= 1;
+    	return price;
     }
-
-    public String id()
+    public String getId()
     {
-        return id;
+    	return id;
     }
-
-    @Override
+    
+    //Misc commands to get data
 	public String toString()
     {
-        return model + "," + price + "," + quantity + "," + id;
+        return model + " " + price + " " + quantity + " " + id;
+    }
+	public void sell()
+    {
+    	quantity -= 1;
+    }
+    public String csvString()
+    {
+    	return model + "," + price + "," + quantity + "," + id;
     }
 
 }

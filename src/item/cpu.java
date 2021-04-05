@@ -1,5 +1,6 @@
 package src.item;
 
+//The CPU class which takes in parameters to be the CPU object 
 public class cpu implements item
 {   
     private String model;
@@ -16,38 +17,53 @@ public class cpu implements item
         id = _id;
     }
 
-    @Override
-	public String model()
+    //Set commands for editing
+	public void setModel(String m)
     {
-        return model;
+        model = m;
     }
-
-    @Override
-	public double price()
+	public void setPrice(double newPrice)
     {
-        return price;
+        price = newPrice;
     }
-
-    @Override
-	public int quantity()
+	public void setQuantity(int newQuan)
     {
-        return quantity;
+        quantity = newQuan;
     }
-
-    @Override
-	public void sell()
+    public void setId(String newId)
     {
-        quantity -= 1;
+        id = newId;
     }
-
-    public String id()
+    
+    //Get commands to get values
+    public String getModel() 
     {
-        return id;
+    	return model;
     }
-
-    @Override
-	public String toString()
+    public int getQuantity()
     {
-        return model + "," + price + "," + quantity + "," + id;
+		return quantity;
+    }
+    public double getPrice()
+    {
+    	return price;
+    }
+    public String getId()
+    {
+    	return id;
+    }
+    
+    //Misc commands for dealing with data
+    public String csvString()
+    {
+    	return model + "," + price + "," + quantity + "," + id;
+    }
+    public void sell()
+    {
+    	quantity -= 1;
+    }
+    public String toString()
+    {
+        return model + " " + price + " " + quantity + " " + id;
     }
 }

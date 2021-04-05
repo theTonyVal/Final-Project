@@ -1,3 +1,5 @@
+package archive;
+
 import javax.swing.*;
 
 import src.main.*;
@@ -18,6 +20,7 @@ public class MainGUI implements ActionListener {
     
     public static inventory invent = new inventory(inv);
     public static Cart cart = new Cart(_cart);
+    
 
     private JFrame frame;
     private JPanel panel;
