@@ -14,14 +14,14 @@ public class driver {
     private static LoginGUI lGui;
 
     //A few variables used to test if the GUI was functioning
-    private static cpu amd = new cpu("ryzen5-3600", 400.0, 10, "34536c");
-    private static cpu intel = new cpu("i5-9600k", 400.0, 10, "25252c");
-    private static gpu nvidia = new gpu("2060rtx", 500.0, 10, "56345g");
-    private static gpu radeon = new gpu("6600x", 800.0, 10, "89234g");
-    private static ram hyperX = new ram("hyperx", 100.0, 10, "25891r");
-    private static misc keyBoard = new misc ("qwerty", 100.0, 10, "64533k");
+    private static Cpu amd = new Cpu("ryzen5-3600", 400.0, 10, "34536c");
+    private static Cpu intel = new Cpu("i5-9600k", 400.0, 10, "25252c");
+    private static Gpu nvidia = new Gpu("2060rtx", 500.0, 10, "56345g");
+    private static Gpu radeon = new Gpu("6600x", 800.0, 10, "89234g");
+    private static Ram hyperX = new Ram("hyperx", 100.0, 10, "25891r");
+    private static Misc keyBoard = new Misc ("qwerty", 100.0, 10, "64533k");
 
-    public static ArrayList<item> invent = new ArrayList<item>();
+    public static ArrayList<Item> invent = new ArrayList<Item>();
     public static text text = new text("store.csv");
 
     //initializes the Login GUI which will start the main GUI if a login is accepted.

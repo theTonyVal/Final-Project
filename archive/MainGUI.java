@@ -15,10 +15,10 @@ import java.util.Set;
 
 public class MainGUI implements ActionListener {
 
-    public static ArrayList<Map<item, Integer>> inv = new ArrayList<>();
-    public static ArrayList<item> _cart = new ArrayList<>();
+    public static ArrayList<Map<Item, Integer>> inv = new ArrayList<>();
+    public static ArrayList<Item> _cart = new ArrayList<>();
     
-    public static inventory invent = new inventory(inv);
+    public static inventory2 invent = new inventory2(inv);
     public static Cart cart = new Cart(_cart);
     
 
@@ -27,10 +27,10 @@ public class MainGUI implements ActionListener {
     private JLabel itemLabel, priceLabel, skillLabel, quanLabel, costLabel;
     private JTextField userText;
     private JButton addCart, removeCart, purchase;
-	private DefaultListModel<Map<item, Integer>> itemList;
-    private JList<Map<item, Integer>> itemJList = new JList<Map<item, Integer>>();
-    private JList<item> cartJList = new JList<item>();
-    private DefaultListModel<item> cartList;
+	private DefaultListModel<Map<Item, Integer>> itemList;
+    private JList<Map<Item, Integer>> itemJList = new JList<Map<Item, Integer>>();
+    private JList<Item> cartJList = new JList<Item>();
+    private DefaultListModel<Item> cartList;
 
     public MainGUI() throws IOException {
 
@@ -66,7 +66,7 @@ public class MainGUI implements ActionListener {
         panel.add(costLabel);
         
         //itemList = new JList<item>(_invent.toArray(new item[0]));
-        itemList = new DefaultListModel<Map<item, Integer>>();
+        itemList = new DefaultListModel<Map<Item, Integer>>();
         
         for (int c = 0; c < inv.size(); c++)
         {
@@ -77,7 +77,7 @@ public class MainGUI implements ActionListener {
         itemJList.setBounds(10, 50, 500, 500);
         panel.add(itemJList);
         
-        cartList = new DefaultListModel<item>();
+        cartList = new DefaultListModel<Item>();
         cartJList.setModel(cartList);
         cartJList.setBounds(650, 50, 500, 500);
         panel.add(cartJList);
@@ -104,7 +104,7 @@ public class MainGUI implements ActionListener {
 
     public void AddtoCart()
     {
-        Map<item, Integer> selected = itemJList.getSelectedValue();
+        Map<Item, Integer> selected = itemJList.getSelectedValue();
         int quantity = 0;
 
         for (int i : selected.values())
@@ -114,8 +114,8 @@ public class MainGUI implements ActionListener {
 
         if (quantity != 0)
         {
-            Set<item> temp = selected.keySet();
-            for (item i : temp)
+            Set<Item> temp = selected.keySet();
+            for (Item i : temp)
             {
                 cartList.add(0, i);
                 selected.put(i, selected.get(i)-1);
@@ -126,13 +126,13 @@ public class MainGUI implements ActionListener {
 
     public void RemoveFromCart()
     {
-        item i = cartJList.getSelectedValue();
+        Item i = cartJList.getSelectedValue();
 
         System.out.print(i);
 
         for (int c = 0; c < itemList.size(); c++)
         {
-            for (item j : itemList.get(c).keySet())
+            for (Item j : itemList.get(c).keySet())
             {
                 System.out.print(itemList.get(c));
                 if (i.equals(j))

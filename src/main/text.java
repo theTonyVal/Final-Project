@@ -19,11 +19,11 @@ public class text {
     }
 
     //Writes the ArrayList of items to the .csv file (spreadsheet)
-    public void writeInvent(ArrayList<item> itemList) throws IOException
+    public void writeInvent(ArrayList<Item> itemList) throws IOException
     {
         FileWriter csv = new FileWriter(path);
         
-        for (item i : itemList)
+        for (Item i : itemList)
         {
             csv.append(String.join(",", i.csvString()));
             csv.append("\n");
@@ -34,10 +34,10 @@ public class text {
     }
 
     //Reads an ArrayList of items from the .csv file and organizes each item into different objects
-    public ArrayList<item> readInvent() throws IOException
+    public ArrayList<Item> readInvent() throws IOException
     {
         BufferedReader csv = new BufferedReader(new FileReader(path));
-        ArrayList <item> items = new ArrayList<item>();
+        ArrayList <Item> items = new ArrayList<Item>();
 
 
         String row = csv.readLine();
@@ -47,22 +47,22 @@ public class text {
 
             if (temp[3].contains("r"))
             {
-                ram tempRam = new ram(temp[0], Double.valueOf(temp[1]), Integer.valueOf(temp[2]), temp[3]);
+                Ram tempRam = new Ram(temp[0], Double.valueOf(temp[1]), Integer.valueOf(temp[2]), temp[3]);
                 items.add(tempRam);
             }
             else if (temp[3].contains("g"))
             {
-                gpu tempGpu = new gpu(temp[0], Double.valueOf(temp[1]), Integer.valueOf(temp[2]), temp[3]);
+                Gpu tempGpu = new Gpu(temp[0], Double.valueOf(temp[1]), Integer.valueOf(temp[2]), temp[3]);
                 items.add(tempGpu);
             }
             else if (temp[3].contains("c"))
             {
-                cpu tempCpu = new cpu(temp[0], Double.valueOf(temp[1]), Integer.valueOf(temp[2]), temp[3]);
+                Cpu tempCpu = new Cpu(temp[0], Double.valueOf(temp[1]), Integer.valueOf(temp[2]), temp[3]);
                 items.add(tempCpu);
             }
             else
             {
-            	misc tempMisc = new misc(temp[0], Double.valueOf(temp[1]), Integer.valueOf(temp[2]), temp[3]);
+            	Misc tempMisc = new Misc(temp[0], Double.valueOf(temp[1]), Integer.valueOf(temp[2]), temp[3]);
             	items.add(tempMisc);
             }
 

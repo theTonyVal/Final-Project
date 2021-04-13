@@ -10,17 +10,17 @@ import java.awt.Font;
 
 public class AdminGUI implements ActionListener{
     
-    private ArrayList<item> itemList = new ArrayList<item>();
+    private ArrayList<Item> itemList = new ArrayList<Item>();
     public text text = new text("store.csv");
     private JFrame frame;
     private JPanel panel;
-    private JList<item> list = new JList<item>();
+    private JList<Item> list = new JList<Item>();
     private JTextField model;
     private JTextField price;
     private JTextField quantity;
     private JTextField id;
     private JButton addItem;
-    private DefaultListModel<item> itemModel;
+    private DefaultListModel<Item> itemModel;
     private JButton editItem;
     private JButton removeItem;
     private JLabel total;
@@ -42,7 +42,7 @@ public class AdminGUI implements ActionListener{
         itemList = text.readInvent();
         System.out.println(itemList);
                 
-        itemModel = new DefaultListModel<item>();
+        itemModel = new DefaultListModel<Item>();
         for (int i = 0; i < itemList.size(); i++)
         {
             itemModel.addElement(itemList.get(i));
@@ -116,25 +116,25 @@ public class AdminGUI implements ActionListener{
 	        	
 	        	if (ident.contains("r"))
 	            {
-	                ram tempRam = new ram(m, p, q, ident);
+	                Ram tempRam = new Ram(m, p, q, ident);
 	                itemModel.add(itemModel.size(), tempRam);
 	                itemList.add(tempRam);
 	            }
 	            else if (ident.contains("g"))
 	            {
-	                gpu tempGpu = new gpu(m, p, q, ident);
+	                Gpu tempGpu = new Gpu(m, p, q, ident);
 	                itemModel.add(itemModel.size(), tempGpu);
 	                itemList.add(tempGpu);
 	            }
 	            else if (ident.contains("c"))
 	            {
-	                cpu tempCpu = new cpu(m, p, q, ident);
+	                Cpu tempCpu = new Cpu(m, p, q, ident);
 	                itemModel.add(itemModel.size(), tempCpu);
 	                itemList.add(tempCpu);
 	            }
 	            else
 	            {
-	            	misc tempMisc = new misc(m, p, q, ident);
+	            	Misc tempMisc = new Misc(m, p, q, ident);
 	            	itemModel.add(itemModel.size(), tempMisc);
 	            	itemList.add(tempMisc);
 	            }
@@ -151,7 +151,7 @@ public class AdminGUI implements ActionListener{
         
         if (e.getSource() == editItem)
         {
-        	item selected = list.getSelectedValue();
+        	Item selected = list.getSelectedValue();
         	
         	try
         	{	
@@ -191,7 +191,7 @@ public class AdminGUI implements ActionListener{
         if (e.getSource() == removeItem)
         {
         	try {
-        		item selected = list.getSelectedValue();
+        		Item selected = list.getSelectedValue();
             	itemModel.removeElement(selected);
             	itemList.remove(selected);
 				text.writeInvent(itemList);
@@ -206,11 +206,11 @@ public class AdminGUI implements ActionListener{
         
     }
     
-    private String updateTotal(ArrayList<item> arr)
+    private String updateTotal(ArrayList<Item> arr)
     {
     	double totalCount = 0.0;
     	
-    	for (item i : arr)
+    	for (Item i : arr)
     	{
     		totalCount += i.getPrice() * i.getQuantity();
     	}

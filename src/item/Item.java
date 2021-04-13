@@ -1,7 +1,7 @@
 package src.item;
 
 //The interface for items. Implemented into every item for polymorphism.
-public interface item
+public interface Item
 {	
     public void setModel(String newModel);
     public void setQuantity(int newQuantity);

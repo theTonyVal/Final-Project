@@ -1,6 +1,6 @@
 package src.item;
 
-public class misc implements item {
+public class Misc implements Item {
 
 	private String model;
     private double price;
@@ -8,7 +8,7 @@ public class misc implements item {
     private int quantity;
     private String id;
 	
-	public misc(String _model, double _price, int _quantity, String _id)
+	public Misc(String _model, double _price, int _quantity, String _id)
 	{
 		model = _model;
 		price = _price;

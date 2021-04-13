@@ -12,19 +12,19 @@ public class inventory {
     public String path = "store.dat";
     public text text = new text(path);
     
-    public ArrayList<Map<item, Integer>> invent = new ArrayList<>();
+    public ArrayList<Map<Item, Integer>> invent = new ArrayList<>();
 
-   public inventory(ArrayList<Map<item, Integer>> _invent)
+   public inventory(ArrayList<Map<Item, Integer>> _invent)
    {
        invent = _invent;
    }
 
-   public void addItem(Map<item, Integer> item)
+   public void addItem(Map<Item, Integer> item)
    {
        invent.add(item);
    }
 
-   public void removeItem(item i)
+   public void removeItem(Item i)
    {
        invent.remove(i);
    }
@@ -34,13 +34,13 @@ public class inventory {
        text.writeObj(invent);
    }
 
-   public ArrayList<Map<item, Integer>> read() throws IOException
+   public ArrayList<Map<Item, Integer>> read() throws IOException
    {
        invent = text.readObj();
        return invent;
    }
 
-   public Map<item, Integer> getItem(int i)
+   public Map<Item, Integer> getItem(int i)
    {
        return invent.get(i);
    }

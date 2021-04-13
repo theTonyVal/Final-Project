@@ -1,6 +1,6 @@
 package src.account;
 
-public class Admin extends account{
+public class Admin extends Account{
 
     private String user, pass;
 

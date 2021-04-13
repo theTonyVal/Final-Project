@@ -1,7 +1,7 @@
 package src.item;
 
-//the RAM class that takes in parameters to be the RAM object
-public class ram implements item {
+//the Ram class that takes in parameters to be the RAM object
+public class Ram implements Item {
     
     private String model;
     private double price;
@@ -9,7 +9,7 @@ public class ram implements item {
     private int quantity;
     private String id;
     
-    public ram(String _model, double _price, int _quantity, String _id)
+    public Ram(String _model, double _price, int _quantity, String _id)
     {
         model = _model;
         price = _price;

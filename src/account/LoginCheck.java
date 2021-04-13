@@ -9,23 +9,23 @@ public class LoginCheck
 
     public boolean loginAdmin = false;
     public boolean loginCust = false;
-    public account loggedInUser;
+    public Account loggedInUser;
     
     public void LoginAuth(String username, String password)
     {
         // Used to hold the instance of a user who successfully logged in
-        account loggedInUser = null;
+        Account loggedInUser = null;
 
         // Create an empty list to hold users
-        List<account> listOfUsers = new ArrayList<>();
+        List<Account> listOfUsers = new ArrayList<>();
 
         // Add 3 users to the list
         listOfUsers.add(new Admin("anthony", "12345"));
         listOfUsers.add(new Admin("twiet", "qwerty"));
-        listOfUsers.add(new customer("test", "1"));
+        listOfUsers.add(new Customer("test", "1"));
 
         // Iterate through list of users to see if we have a match
-        for (account user : listOfUsers)
+        for (Account user : listOfUsers)
         {
             if (user.getUser().equals(username))
             {

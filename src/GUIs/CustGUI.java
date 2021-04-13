@@ -12,13 +12,13 @@ public class CustGUI implements ActionListener {
 
 	public text text = new text("store.csv");
 	
-    public static ArrayList<item> inv = new ArrayList<>();
-    public static ArrayList<item> cart = new ArrayList<>();
+    public static ArrayList<Item> inv = new ArrayList<>();
+    public static ArrayList<Item> cart = new ArrayList<>();
     
-    public static DefaultListModel<item> itemList;
-    public static DefaultListModel<item> cartList;
+    public static DefaultListModel<Item> itemList;
+    public static DefaultListModel<Item> cartList;
     
-    private JList<item> itemJList, cartJList;
+    private JList<Item> itemJList, cartJList;
     private JFrame frame;
     private JPanel panel;
     private JLabel itemLabel, priceLabel, skillLabel, quanLabel, costLabel;
@@ -56,7 +56,7 @@ public class CustGUI implements ActionListener {
         costLabel.setBounds(560, 150, 100, 50);
         panel.add(costLabel);
         
-        itemList = new DefaultListModel<item>();
+        itemList = new DefaultListModel<Item>();
         for (int c = 0; c < inv.size(); c++)
         {
         	itemList.add(c, inv.get(c));
@@ -64,13 +64,13 @@ public class CustGUI implements ActionListener {
         
         System.out.print(itemList);
         
-        itemJList = new JList<item>();
+        itemJList = new JList<Item>();
         itemJList.setModel(itemList);
         itemJList.setBounds(10, 50, 500, 500);
         panel.add(itemJList);
         
-        cartList = new DefaultListModel<item>();
-        cartJList = new JList<item>();
+        cartList = new DefaultListModel<Item>();
+        cartJList = new JList<Item>();
         cartJList.setModel(cartList);
         cartJList.setBounds(650, 50, 500, 500);
         panel.add(cartJList);
@@ -100,7 +100,7 @@ public class CustGUI implements ActionListener {
 		
 		if (e.getSource() == addCart)
 		{
-			item selected = itemJList.getSelectedValue();
+			Item selected = itemJList.getSelectedValue();
 			
 			String m = selected.getModel();
         	double p = selected.getPrice();
@@ -111,17 +111,17 @@ public class CustGUI implements ActionListener {
         	{
 	        	if (ident.contains("r"))
 	            {
-	                ram tempRam = new ram(m, p, 1, ident);
+	                Ram tempRam = new Ram(m, p, 1, ident);
 	                cartList.add(0, tempRam);
 	            }
 	            else if (ident.contains("g"))
 	            {
-	                gpu tempGpu = new gpu(m, p, 1, ident);
+	                Gpu tempGpu = new Gpu(m, p, 1, ident);
 	                cartList.add(0, tempGpu);
 	            }
 	            else if (ident.contains("c"))
 	            {
-	                cpu tempCpu = new cpu(m, p, 1, ident);
+	                Cpu tempCpu = new Cpu(m, p, 1, ident);
 	                cartList.add(0, tempCpu);
 	            }
 				
@@ -140,11 +140,12 @@ public class CustGUI implements ActionListener {
 	        }
 	        costLabel.setText(Double.toString(total));
 	        System.out.print(total);
+	        cartList.clear();
 		}
 		
 		if (e.getSource() == removeCart)
 		{
-			item selected = cartJList.getSelectedValue();
+			Item selected = cartJList.getSelectedValue();
 			
 			for (int c = 0; c < itemList.size(); c++)
 			{

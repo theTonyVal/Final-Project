@@ -1,15 +1,15 @@
 package src.item;
 
-//The CPU class which takes in parameters to be the CPU object 
-public class cpu implements item
-{   
+//The GPU class which takes in parameters to be the GPU class.
+public class Gpu implements Item
+{
     private String model;
     private double price;
-    private int threads;
+    private boolean gaming;
     private int quantity;
     private String id;
-
-    public cpu(String _model, double _price, int _quantity, String _id)
+    
+    public Gpu(String _model, double _price, int _quantity, String _id)
     {
         model = _model;
         price = _price;
@@ -34,7 +34,7 @@ public class cpu implements item
     {
         id = newId;
     }
-    
+
     //Get methods to get values
     public String getModel() 
     {
@@ -54,16 +54,16 @@ public class cpu implements item
     }
     
     //Methods for database
-    public String csvString()
+	public String toString()
     {
-    	return model + "," + price + "," + quantity + "," + id;
+        return model + " " + price + " " + quantity + " " + id;
     }
-    public void sell()
+	public void sell()
     {
     	quantity -= 1;
     }
-    public String toString()
+    public String csvString()
     {
-        return model + " " + price + " " + quantity + " " + id;
+    	return model + "," + price + "," + quantity + "," + id;
     }
 }
