@@ -1,5 +1,6 @@
 *.class
 *.project
 *.classpath
+*.zip
 /bin/
 /dist/Computer-Store
